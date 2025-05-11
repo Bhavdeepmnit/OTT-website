@@ -1,0 +1,34 @@
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.movie {
+    text-align: center;
+    padding: 20px;
+    flex: 0 0 30%; /* Adjust the width of side movies */
+}
+
+.movie img {
+    width: 100%;
+    max-width: 200px; /* Adjust the width of side movie images */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.movie h3 {
+    font-size: 16px;
+}
+
+.movie-center {
+    flex: 0 0 60%; /* Adjust the width of center movie */
+}

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTTFlix | Login</title>
+    <!--link rel="stylesheet" href="style.css"-->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
+
+        * {
+            margin: 0;
+            padding: 0; 
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .header .logo {
+            font-size: 1.7em;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+
+        .nav a {
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 40px;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 5px;
+            transform: scaleX(0);
+            transition: .5s;
+        }
+
+        .nav a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url("{%static 'img/background2.jpeg'%}") no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 100px;
+        }
+
+        .home .content {
+            max-width: 600px;
+            color: #fff;
+        }
+
+        .content h2 {
+            font-size: 3em;
+            letter-spacing: .03em;
+        }
+
+        .content p {
+            margin: 10px 0 40px;
+        }
+
+        .content a {
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            font-weight: 500;
+            padding: 10px 40px;
+            border-radius: 40px;
+            transition: .5s;
+        }
+
+        .content a:hover {
+            background: #1e0b04;
+        }
+
+        .home .wrapper-login {
+            position: relative;
+            width: 440px;
+        }
+
+        .wrapper-login h2 {
+            font-size: 2em;
+            color: #fff;
+            text-align: center;
+        }
+
+        .wrapper-login .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 40px 0;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: 1px solid #fff;
+            outline: none;
+            border-radius: 40px;
+            font-size: 1em;
+            color: #fff;
+            padding: 0 25px 0 45px;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 45px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .input-box input:focus~label, .input-box input:valid~label {
+            font-size: .8em;
+            top: -14px;
+            left: 17px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            top: 14px;
+            left: 15px;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .wrapper-login .remember-forgot {
+            font-size: .9em;
+            color: #fff;
+            font-weight: 500;
+            margin: -25px 0 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .remember-forgot label input {
+            accent-color: #1e0b04;
+            margin-right: 3px;
+        }
+        .remember-forgot a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .wrapper-login .btn {
+            width: 100%;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            background: linear-gradient(90deg, #1e0b04, maroon);
+            box-shadow: 0 8px 10px rgba(0, 0, 0, .5);
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .wrapper-login .register-link {
+            font-size: .9em;
+            color: #fff;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .register-link p a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link p a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer {
+            background-color: #24262b;
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width:50%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #e91e63;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col p {
+            color: #fff;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 0 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #fff;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <ion-icon name="film"></ion-icon><b>OTTFlix</b></a>
+        <nav class="nav" id="navbar">
+            <a href="http://localhost:8000/home/"><b>Home</b></a>
+            <a href="http://localhost:8000/about/"><b>About</b></a>
+            <a href="http://localhost:8000/contact/"><b>Contact</b></a>
+            <a href="http://localhost:8000/feedback/"><b>Feedback</b></a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="content">
+            <h2>Flix N Chill!</h2>
+            <p>Now at the tip of your fingers.</p>
+        </div>
+
+        <div class="wrapper-login">
+            <h2>Member Login</h2>
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" name="email" required>
+                    <label>Enter your email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Enter your password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember Me</label>
+                    <a href="http://localhost:8000/forgotpwd/">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="register-link">
+                    <p>Not a member? <a href="http://localhost:8000/signup/">Sign Up Now</a></p>
+                </div>
+            </form>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <p>Explore OTTFlix: pioneers of innovative entertainment. From humble roots to global impact, discover our journey reshaping streaming. Dive into our story of creativity, tech, and commitment to redefining how the world watches.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/iamsubro113/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/subhrajit-roy-563731274/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/roysubhrajit113"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

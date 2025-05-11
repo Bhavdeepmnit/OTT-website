@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTTFlix | Feedback Submission</title>
+    <!--link rel="stylesheet" href="style.css"-->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
+        @keyframes fader {
+            0% {background: url("{%static 'img/about.jpg'%}")}
+            25% {background: url("{%static 'img/movie1.jpeg'%}")}
+            50% {background: url("{%static 'img/movie2.jpeg'%}")}
+            75% {background: url("{%static 'img/movie3.jpg'%}")}
+            100% {background: url("{%static 'img/movie4.jpg'%}")}
+        }
+
+        * {
+            margin: 0;
+            padding: 0; 
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .header .logo {
+            font-size: 1.7em;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+
+        .nav a {
+            position: relative;
+            font-size: 1.1em;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 40px;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 5px;
+            transform: scaleX(0);
+            transition: .5s;
+        }
+
+        .nav a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .home {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url("{%static 'img/bg.jpg'%}") no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 100px;
+            
+        }
+
+        .home .content {
+            max-width: 600px;
+            color: #fff;
+        }
+
+        .content h2 {
+            font-size: 3em;
+            letter-spacing: .03em;
+        }
+
+        .content h3 p {
+            margin: 10px 0 40px;
+        }
+
+        .content a {
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            font-weight: 500;
+            padding: 10px 40px;
+            border-radius: 40px;
+            transition: .5s;
+        }
+
+        .content a:hover {
+            background: #1e0b04;
+        }
+
+        .map h2 {
+            color: #fff;
+        }
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .footer {
+            background-color: #24262b;
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width:50%;
+            padding: 0 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            background-color: #e91e63;
+            height: 2px;
+            box-sizing: border-box;
+            width: 50px;
+        }
+
+        .footer-col p {
+            color: #fff;
+        }
+
+        .footer-col .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 0 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.5s ease;
+        }
+
+        .footer-col .social-links a:hover {
+            color: #24262b;
+            background-color: #fff;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <ion-icon name="film"></ion-icon><b>OTTFlix</b></a>
+        <nav class="nav" id="navbar">
+            <a href="http://localhost:8000/home/"><b>Home</b></a>
+            <a href="http://localhost:8000/about/"><b>About</b></a>
+            <a href="http://localhost:8000/contact/"><b>Contact</b></a>
+            <a href="http://localhost:8000/login/"><b>Login</b></a>
+        </nav>
+    </header>
+
+    <section class="home">
+        <div class="content">
+            <h2>Feedback Submitted Successfully</h2>
+            <h3><p></p></h3>
+        </div>
+        
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <p>Explore OTTFlix: pioneers of innovative entertainment. From humble roots to global impact, discover our journey reshaping streaming. Dive into our story of creativity, tech, and commitment to redefining how the world watches.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/iamsubro113/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/subhrajit-roy-563731274/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/roysubhrajit113"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
